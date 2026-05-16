@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Row, Col, Nav, Navbar } from "react-bootstrap";
 
 export default function MainLayout() {
+  const [open, setOpen] = useState(false);
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
@@ -14,7 +16,7 @@ export default function MainLayout() {
         {/* SIDEBAR */}
         <Col
           md={2}
-          className="d-none d-md-block min-vh-100 text-white p-0"
+          className={`min-vh-100 text-white p-0 sidebar ${open ? "open" : ""}`}
           style={{
             background: "linear-gradient(180deg, #0f172a, #111827, #0b1220)",
             boxShadow: "6px 0 25px rgba(0,0,0,0.3)"
@@ -47,7 +49,8 @@ export default function MainLayout() {
             <Nav.Link
               as={Link}
               to="/"
-              className="rounded-3 px-3 py-2"
+              onClick={() => setOpen(false)}
+              className="rounded-3 px-3 py-2 nav-item"
               style={{
                 color: "#cbd5e1",
                 background: isActive("/") ? "rgba(99,102,241,0.25)" : "transparent"
@@ -59,7 +62,8 @@ export default function MainLayout() {
             <Nav.Link
               as={Link}
               to="/products"
-              className="rounded-3 px-3 py-2"
+              onClick={() => setOpen(false)}
+              className="rounded-3 px-3 py-2 nav-item"
               style={{
                 color: "#cbd5e1",
                 background: isActive("/products") ? "rgba(99,102,241,0.25)" : "transparent"
@@ -71,7 +75,8 @@ export default function MainLayout() {
             <Nav.Link
               as={Link}
               to="/add-product"
-              className="rounded-3 px-3 py-2"
+              onClick={() => setOpen(false)}
+              className="rounded-3 px-3 py-2 nav-item"
               style={{
                 color: "#cbd5e1",
                 background: isActive("/add-product") ? "rgba(99,102,241,0.25)" : "transparent"
@@ -89,7 +94,7 @@ export default function MainLayout() {
           md={10}
           className="min-vh-100 p-0"
           style={{
-            background: "linear-gradient(135deg, #f8fafc, #eef2ff)"
+            background: "#0b1220"
           }}
         >
 
@@ -101,7 +106,23 @@ export default function MainLayout() {
             }}
             variant="dark"
           >
-            <Navbar.Brand className="fw-bold">Stockora</Navbar.Brand>
+
+            <button
+              onClick={() => setOpen(!open)}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "white",
+                fontSize: "24px"
+              }}
+            >
+              ☰
+            </button>
+
+            <Navbar.Brand className="ms-3 fw-bold">
+              Stockora
+            </Navbar.Brand>
+
           </Navbar>
 
           {/* CONTENT */}
@@ -112,7 +133,6 @@ export default function MainLayout() {
         </Col>
 
       </Row>
-
     </div>
   );
 }

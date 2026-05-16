@@ -38,3 +38,20 @@ html, body, #root {
 .nav-link {
   text-decoration: none !important;
 }
+@media (max-width: 768px) {
+
+  .sidebar {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    z-index: 999;
+    transition: 0.3s ease;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+}
