@@ -1,0 +1,40 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Segoe UI", sans-serif;
+  background: #f1f5f9;
+}
+
+/* Smooth text */
+* {
+  box-sizing: border-box;
+}
+
+/* Scrollbar (optional but premium feel) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #64748b;
+  border-radius: 10px;
+}
+.nav-item {
+  border-radius: 10px;
+  padding: 10px 12px !important;
+  transition: all 0.2s ease;
+}
+
+/* Bootstrap-friendly hover (NO gradients) */
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff !important;
+  transform: translateX(3px);
+}
+
+/* remove default bootstrap link underline behavior */
+.nav-link {
+  text-decoration: none !important;
+}
